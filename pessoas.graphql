@@ -1,0 +1,31 @@
+type Pessoa @model {
+  id: ID! @isUnique
+  nome: String
+  tipo: Tipo
+  razaoSocial: String
+  cpf: String
+  cnpj: String
+  sexo: String
+  dataNasc: String
+  email: String
+  telefone: String
+  celular: String
+  enderecos: [Endereco!]! @relation(name: "Enderecos")
+}
+ 
+type Endereco @model {
+  id: ID! @isUnique
+  endereco: String!
+  numero: String!
+  complemento: String
+  bairro: String!
+  cidade: String!
+  estado: String!
+  cep: String!
+  pessoa: Pessoa @relation(name: "Enderecos")
+}
+
+enum Tipo {
+  FISICA
+  JURIDICA
+}
